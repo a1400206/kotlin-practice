@@ -3,11 +3,11 @@
 package demo
 
 fun main(args : Array<String>) {
+
+    // Different ways to create arrays
     var sqArray = Array(5, { x -> x * x })
     println(sqArray[2])
-
     var arr2: Array<Int> = arrayOf(1, 2, 3)
-
     val oneTo10 = 1..10
     val alpha = "A".."Z"
     println("R in Alpha : ${"R" in alpha}")

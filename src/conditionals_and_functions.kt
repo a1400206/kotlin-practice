@@ -52,7 +52,7 @@ fun main(args : Array<String>) {
         println("Index : ${index} Value : ${value}")
     }
 
-    // Functions
+    // Basic Functions
     fun add(num1:Int, num2:Int) : Int = num1 + num2
     println("5 + 4 = ${add(5,4)}")
     fun subtract(num1:Int=1, num2:Int=1) = num1 - num2
@@ -68,39 +68,6 @@ fun main(args : Array<String>) {
     val multiply = {num1: Int, num2: Int -> num1 * num2}
     println("5 * 3 = ${multiply(5,3)}")
     println("5! = ${fact(5)}")
-
-    // Higher order functions
-    // From the kotlin site:
-    // In the code below, the parameter combine has a function type (R, T) -> R,
-    // so it accepts a function that takes two arguments of types R and T and returns a value of type R.
-    // It is invoked inside the for-loop, and the return value is then assigned to accumulator.
-    fun <T, R> Collection<T>.fold(initial: R, combine: (acc : R, nextElement : T) -> R) : R {
-        var accumulator : R = initial
-        for (element : T in this) {
-            accumulator = combine(accumulator, element)
-        }
-        return accumulator
-    }
-    val items = listOf(1, 2, 3, 4, 5)
-
-    // Notice the lambdas here, when a lambda has paramameters, like acc: Int, i: Int ->, params go first and then the ->
-    // Here we pass to Collection<T>.fold the parameters.
-    items.fold(0, {
-        acc : Int, i : Int ->
-        print("acc = $acc, i = $i, ")
-        val result = acc + i
-        println("result = $result")
-
-        // THE LAST EXPRESSION IN LAMBDA IS CONSIDERED A RETURN VALUE!
-        result
-    })
-    // Parameter types in a lambda are optional if they can be inferred:
-    val joinedToString = items.fold("Elements:", { acc, i -> acc + " " + i })
-    println("joinedToString: $joinedToString")
-    // Function references can also be used for higher-order function calls:
-    val product = items.fold(1, Int::times)
-    println("product: $product")
-
 }
 fun nextTwo(num: Int): Pair<Int, Int> {
     return Pair(num+1, num+2)
@@ -112,6 +79,7 @@ fun getSum(vararg nums : Int): Int {
 }
 fun fact(x: Int): Int {
     // Tail recursion (tailrec) can be used to make loops with recursive function without risk of stack overflow
+    // See example from Kotlin site https://kotlinlang.org/docs/reference/functions.html#tail-recursive-functions
     tailrec fun factTail(y: Int, z: Int): Int {
         if(y == 0) return z
         else return factTail(y - 1, y * z)
