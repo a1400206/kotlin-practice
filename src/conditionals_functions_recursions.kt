@@ -68,7 +68,14 @@ fun main(args : Array<String>) {
     val multiply = {num1: Int, num2: Int -> num1 * num2}
     println("5 * 3 = ${multiply(5,3)}")
     println("5! = ${fact(5)}")
+
+    // Another example of recursion
+    val number = 4
+    val result: Long
+    result = factorial(number)
+    println("Factorial of $number = $result")
 }
+
 fun nextTwo(num: Int): Pair<Int, Int> {
     return Pair(num+1, num+2)
 }
@@ -85,4 +92,10 @@ fun fact(x: Int): Int {
         else return factTail(y - 1, y * z)
     }
     return factTail(x , 1)
+}
+
+// Recursion - a function that calls itself, to create loops
+fun factorial(n: Int): Long {
+    println("Factorial loop n: $n")
+    return if (n == 1) n.toLong() else n*factorial(n-1)
 }

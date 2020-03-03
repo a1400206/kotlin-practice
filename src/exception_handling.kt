@@ -16,4 +16,19 @@ fun main(args : Array<String>) {
         println("${e.message}")
     }
 
+    // We can also use Elvis operator ?:
+    val person = object {
+        var name: String? = "Ronaldinho Gaucho"
+        var profession: String? = "Footballer"
+        var number: Int = 10
+    }
+    val s = person.name ?: throw IllegalArgumentException("Name required")
+
+    // The type of the throw expression is the special type Nothing.
+    // The type has no values and is used to mark code locations that can never be reached.
+    // In your own code, you can use Nothing to mark a function that never returns:
+    fun fail(message: String): Nothing {
+        throw IllegalArgumentException(message)
+    }
 }
+

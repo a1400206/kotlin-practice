@@ -26,7 +26,7 @@ fun main(args : Array<String>) {
     map[1] = "Kaapo"
     map[2] = 69
     println("Map size : ${map.size}")
-    map.put(3, "Pittsburgh")
+    map.put(3, "Helsinki")
     map.remove(2)
 
     for ((x, y) in map) {
@@ -38,6 +38,9 @@ fun main(args : Array<String>) {
     bowser.getInfo()
     val paavo = Dog("Paavo", 20.0, 14.5, "El Juhinho")
     paavo.getInfo()
+
+    val tweety = Bird("Tweetie", true)
+    tweety.fly(10.0)
 }
 
 // Info about open classes here https://stackoverflow.com/questions/49076121/what-is-open-keyword-for-fields-in-kotlin/49076147
@@ -67,5 +70,19 @@ class Dog(name: String,
     override fun getInfo(): Unit {
         println("$name is $height cm tall and $weight kg fat. Damn thats one fat dawg lemme tell ya, " +
                 "its owner $owner should do something about it.")
+    }
+}
+
+// Interfaces - like classes, but cant store state
+interface Flyable {
+    var flies: Boolean
+    fun fly(distMile: Double): Unit
+}
+
+class Bird constructor(val name: String, override var flies: Boolean = true) : Flyable {
+    override fun fly(distMile: Double): Unit {
+        if (flies) {
+            println("$name flies $distMile miles")
+        }
     }
 }
