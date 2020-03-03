@@ -23,6 +23,7 @@ fun main(args : Array<String>) {
         var number: Int = 10
     }
     val s = person.name ?: throw IllegalArgumentException("Name required")
+    println("s : $s")
 
     // The type of the throw expression is the special type Nothing.
     // The type has no values and is used to mark code locations that can never be reached.
