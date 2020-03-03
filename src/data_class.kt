@@ -32,7 +32,6 @@ data class Laptop (val brand:String, val price:Int) {
 
 data class Person(val name: String, val age: Int)
 
-
 fun main(args: Array<String>) {
     var lap1 = Laptop("Dell", 2000)
     var lap2 = Laptop("Dell", 2000)
@@ -43,5 +42,5 @@ fun main(args: Array<String>) {
     fun getPeople(): List<Person> {
         return listOf(Person("Alice", 29), Person("Bob", 31))
     }
-    println("People : ${getPeople()}")
+    getPeople().forEach { n ->  println("${n.name} is ${n.age} old")}
 }
